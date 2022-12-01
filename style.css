@@ -86,7 +86,7 @@ hr {
     color: #fabbec;
     font-size: 12px;
     font-weight: bold;
-    margin-left: 15px;
+    margin-left: 10px;
 }
 
 .card {
@@ -100,7 +100,7 @@ hr {
 }
 
 .pink {
-    background: #fabbec;
+    background: linear-gradient(#ffb5d7, #fabbec);
     border-color: #fc82bb;
     border-radius: 10px;
     box-shadow: 7px 5px 5px lightgray;
