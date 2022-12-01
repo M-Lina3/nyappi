@@ -19,8 +19,12 @@ h3 {
 
 h6 {
     color: #ffffff;
-    
-    font-weight: bold;
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 300;
+    position: relative;
+    left: 20px;
+    top: 20px;
 }
 hr {
     margin: 5px;
@@ -35,7 +39,7 @@ hr {
     top: 20px;
 }
 
-.smol {
+.units {
     color: #ffffff;
     font-size: 15px;
     font-weight: bold;
@@ -43,17 +47,26 @@ hr {
     top: -5px;
 }
 
-.smol a {
+.units a {
     text-decoration: none;
 }
 
-.smol a:hover {
+.units a:hover {
     text-decoration: underline;
     color: mediumvioletred;
+}
+.smol {
+    font-size: 14px;
+    color: #ffffff;
 }
 
 .temp {
     text-align: left;
+}
+.xsmol {
+    font-size: 10px;
+
+    color: #ffffff;
 }
 
 .minmax {
@@ -105,12 +118,12 @@ hr {
     border-radius: 10px;
     box-shadow: 7px 5px 5px lightgray;
     color: #ffffff;
+    display: inline;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     margin: 0 0 0 10px;
     padding: 4px 13px;
     transition: all 333ms ease-in-out;
-    display: inline;
 }
 
 .pink:hover { 
