@@ -56,9 +56,6 @@ let leCity = document.querySelector("#city");
 let leForm = document.querySelector("#search-form");
 leForm.addEventListener("submit", searchedCity);
 
-let temperature = document.querySelector("#degrees");
-
-
 
 //weather API---------------------
 let apiKey = "0b6316953363b3ec3e7536039a47981b";
@@ -67,6 +64,7 @@ let units = "imperial";
 
 
 function showTemperature(response) {
+  let temperature = document.querySelector("#degrees");
   temperature.innerHTML = Math.round(response.data.main.temp);
   leCity.innerHTML = response.data.name
   let desc = document.querySelector("#description")
