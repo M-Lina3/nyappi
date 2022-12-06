@@ -76,8 +76,9 @@ hr {
     text-decoration: none;
 }
 .smol {
-    font-size: 13px;
     color: #ffffff;
+    font-size: 13px;
+    line-height: 15px;
     text-align: left;
 }
 .smol:first-letter {
