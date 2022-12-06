@@ -82,8 +82,11 @@ hr {
     left: 15px;
 }
 .icon {
+    object-fit: none;
+    width: 60px;
+    height: 60px;
     position: relative;
-    left: 20px;
+    margin-left: 15px;
 }
 .xsmol {
     font-size: 11px;

@@ -84,7 +84,7 @@ function showTemperature(response) {
   let coun = document.querySelector("#country")
   coun.innerHTML = response.data.sys.country
   let icon = document.querySelector("#icon")
-  icon.setAttribute("src", `http://openweathermap.org/img/wn/10d@2x.png`)
+  icon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
 }
 
 function getWeatherOfCity(cityToCheck){
