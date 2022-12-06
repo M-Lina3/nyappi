@@ -22,14 +22,22 @@ h6 {
     font-size: 13px;
     font-style: italic;
     font-weight: 300;
-    padding: 10px 0 0 0;
+    padding: 0;
     position: relative;
     left: 10px;
 }
 hr {
     margin: 5px;
 }
-
+.lecountry {
+    font-size: 14px;
+    font-style: italic;
+    text-align: right;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    left: -10px;
+}
 .lacity {
     font-family: "Tangerine", "Times New Roman", Times, serif;
     font-size: 50px;

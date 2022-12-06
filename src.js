@@ -1,3 +1,4 @@
+//time--------------------
 let now = new Date();
 let date = now.getDate();
 let days = [
@@ -38,8 +39,8 @@ if (minutes < 10) {
   minutes = `0${minutes}`;
 }
 
-let h6 = document.querySelector("h6");
-h6.innerHTML = `${day}, ${month} ${date}, ${year}  ${hour}:${minutes}`;
+let nau = document.querySelector("#nau");
+nau.innerHTML = `${hour}:${minutes} <br> ${day}, ${month} ${date}, ${year}`;
 
 //search engine---------------
 
@@ -79,6 +80,8 @@ function showTemperature(response) {
   max.innerHTML = Math.round(response.data.main.temp_max)
   let min = document.querySelector("#min")
   min.innerHTML = Math.round(response.data.main.temp_min)
+  let coun = document.querySelector("#country")
+  coun.innerHTML = response.data.sys.country
 }
 
 function getWeatherOfCity(cityToCheck){
