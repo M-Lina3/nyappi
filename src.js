@@ -43,7 +43,6 @@ let nau = document.querySelector("#nau");
 nau.innerHTML = `${hour}:${minutes} <br> ${day}, ${month} ${date}, ${year}`;
 
 //search engine---------------
-
 function searchedCity(event) {
     event.preventDefault();
     let cityInput = document.querySelector("#search-input");
@@ -61,10 +60,9 @@ leForm.addEventListener("submit", searchedCity);
 let apiKey = "0b6316953363b3ec3e7536039a47981b";
 let city = "Los Angeles";
 let units = "imperial";
-
+let temperature = document.querySelector("#degrees");
 
 function showTemperature(response) {
-  let temperature = document.querySelector("#degrees");
   temperature.innerHTML = Math.round(response.data.main.temp);
   leCity.innerHTML = response.data.name
   let desc = document.querySelector("#description")
@@ -107,14 +105,16 @@ navigator.geolocation.getCurrentPosition(showPosition);
 let button = document.querySelector("button");
 button.addEventListener("click", getCurrentPosition);
 
-//.inactive link
+
 /*
+change imperial to metric 
+add to function y VV
+
 (fahrenheit)___.classList.remove("inactive")
 (celsius)___.classList.add("inactive")
-
 */
 
-//convert F to C & vice versa-----------------
+//convert F to C & vice versa (/・ω・)/-----------------
 /*function convertToF(event) {
   event.preventDefault();
   let leTemps = temperature.innerHTML;
