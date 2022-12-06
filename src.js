@@ -65,6 +65,7 @@ let apiKey = "0b6316953363b3ec3e7536039a47981b";
 let city = "Los Angeles";
 let units = "imperial";
 
+
 function showTemperature(response) {
   temperature.innerHTML = Math.round(response.data.main.temp);
   leCity.innerHTML = response.data.name
@@ -82,6 +83,8 @@ function showTemperature(response) {
   min.innerHTML = Math.round(response.data.main.temp_min)
   let coun = document.querySelector("#country")
   coun.innerHTML = response.data.sys.country
+  let icon = document.querySelector("#icon")
+  icon.setAttribute("src", `http://openweathermap.org/img/wn/10d@2x.png`)
 }
 
 function getWeatherOfCity(cityToCheck){
