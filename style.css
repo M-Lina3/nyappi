@@ -66,6 +66,14 @@ hr {
     text-decoration: underline;
     color: mediumvioletred;
 }
+.units .inactive {
+    color: #ffffff;
+    cursor: default;
+}
+.units .inactive:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
 .smol {
     font-size: 13px;
     color: #ffffff;

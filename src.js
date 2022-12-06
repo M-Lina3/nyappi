@@ -107,8 +107,12 @@ navigator.geolocation.getCurrentPosition(showPosition);
 let button = document.querySelector("button");
 button.addEventListener("click", getCurrentPosition);
 
+//.inactive link
+/*
+(fahrenheit)___.classList.remove("inactive")
+(celsius)___.classList.add("inactive")
 
-
+*/
 
 //convert F to C & vice versa-----------------
 /*function convertToF(event) {
