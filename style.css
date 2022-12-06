@@ -51,6 +51,7 @@ hr {
 
 .units a {
     text-decoration: none;
+    color: mediumvioletred;
 }
 
 .units a:hover {
@@ -113,9 +114,11 @@ hr {
     font-weight: bold;
     text-align: left;
     margin: 5px;
-    position: fixed;
+    position: absolute;
 }
-
+.power a {
+    color:#fabbec
+}
 .card {
     background: linear-gradient(#fff197, #ffb5d7);
     border-color: #fc82bb;
