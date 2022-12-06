@@ -67,6 +67,18 @@ let units = "imperial";
 function showTemperature(response) {
   temperature.innerHTML = Math.round(response.data.main.temp);
   leCity.innerHTML = response.data.name
+  let desc = document.querySelector("#description")
+  desc.innerHTML = response.data.weather[0].description;
+  let wiind = document.querySelector("#wind")
+  wiind.innerHTML = Math.round(response.data.wind.speed)
+  let humi = document.querySelector("#humidity")
+  humi.innerHTML = response.data.main.humidity;
+  let feel = document.querySelector("#feels")
+  feel.innerHTML = Math.round(response.data.main.feels_like)
+  let max = document.querySelector("#max")
+  max.innerHTML = Math.round(response.data.main.temp_max)
+  let min = document.querySelector("#min")
+  min.innerHTML = Math.round(response.data.main.temp_min)
 }
 
 function getWeatherOfCity(cityToCheck){
@@ -81,16 +93,11 @@ function showPosition(position) {
   let lat = position.coords.latitude.toFixed(2);
   let long = position.coords.longitude.toFixed(2);
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=${units}`;
-  axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemp);
+  axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
 }
 
 function getCurrentPosition(){
 navigator.geolocation.getCurrentPosition(showPosition);
-}
-
-function showTemp(response) {
-    temperature.innerHTML = Math.round(response.data.main.temp);
-    leCity.innerHTML = "Your Location"
 }
 
 let button = document.querySelector("button");

@@ -59,11 +59,14 @@ hr {
     color: mediumvioletred;
 }
 .smol {
-    font-size: 14px;
+    font-size: 13px;
     color: #ffffff;
     text-align: left;
 }
+.smol:first-letter {
+    text-transform: capitalize;
 
+}
 .temp {
     text-align: center;
     position: relative;
@@ -75,7 +78,7 @@ hr {
     left: 20px;
 }
 .xsmol {
-    font-size: 10px;
+    font-size: 11px;
     color: #ffffff;
     line-height: 16px;
     padding-top: 7px;
