@@ -32,7 +32,7 @@ hr {
 
 .lacity {
     font-family: "Tangerine", "Times New Roman", Times, serif;
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 400;
     position: relative;
     left: 15px;
@@ -44,7 +44,7 @@ hr {
     font-size: 15px;
     font-weight: bold;
     position: relative;
-    left: 5px;
+    left: 10px;
     top: -5px;
     text-align: center;
 }
@@ -68,7 +68,7 @@ hr {
     text-align: center;
     position: relative;
     top: 12px;
-    left: 7px;
+    left: 13px;
 }
 .icon {
     position: relative;
@@ -113,7 +113,6 @@ hr {
     font-size: 12px;
     font-weight: bold;
     text-align: left;
-    margin: 5px;
     position: absolute;
 }
 .power a {
