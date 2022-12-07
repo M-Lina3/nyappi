@@ -55,7 +55,6 @@ let leCity = document.querySelector("#city");
 let leForm = document.querySelector("#search-form");
 leForm.addEventListener("submit", searchedCity);
 
-
 //weather API---------------------
 let apiKey = "0b6316953363b3ec3e7536039a47981b";
 let city = "Los Angeles";
@@ -81,6 +80,8 @@ function showTemperature(response) {
   coun.innerHTML = response.data.sys.country
   let icon = document.querySelector("#icon")
   icon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
+
+  fahrenheitTemp = response.data.main.temp
 }
 
 function getWeatherOfCity(cityToCheck){
@@ -105,16 +106,31 @@ navigator.geolocation.getCurrentPosition(showPosition);
 let button = document.querySelector("button");
 button.addEventListener("click", getCurrentPosition);
 
+//change imperial to metric (/・ω・)/-----------
+function changeToC(event) {
+  event.preventDefault();
+  fahrenheitLink.classList.remove("inactive")
+  celsiusLink.classList.add("inactive")
+  let celsiusTemp = Math.round(((fahrenheitTemp - 32)* 5)/9)
+  temperature.innerHTML = celsiusTemp
+}
 
-/*
-change imperial to metric 
-add to function y VV
+function changeToF(event) {
+  event.preventDefault()
+  celsiusLink.classList.remove("inactive")
+  fahrenheitLink.classList.add("inactive")
+  temperature.innerHTML = Math.round(fahrenheitTemp)
+}
 
-(fahrenheit)___.classList.remove("inactive")
-(celsius)___.classList.add("inactive")
-*/
+let celsiusLink = document.querySelector("#convertC")
+celsiusLink.addEventListener("click", changeToC)
 
-//convert F to C & vice versa (/・ω・)/-----------------
+let fahrenheitLink = document.querySelector("#convertF")
+fahrenheitLink.addEventListener("click", changeToF)
+
+let fahrenheitTemp = null
+
+//convert F to C & vice versa-----------------
 /*function convertToF(event) {
   event.preventDefault();
   let leTemps = temperature.innerHTML;

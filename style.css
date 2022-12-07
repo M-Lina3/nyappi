@@ -68,11 +68,11 @@ hr {
     color: mediumvioletred;
 }
 .units .inactive {
-    color: #ffffff;
+    color: #ffffff !important;
     cursor: default;
 }
 .units .inactive:hover {
-    color: #ffffff;
+    color: #ffffff !important;
     text-decoration: none;
 }
 .smol {
