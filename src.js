@@ -129,25 +129,3 @@ let fahrenheitLink = document.querySelector("#convertF")
 fahrenheitLink.addEventListener("click", changeToF)
 
 let fahrenheitTemp = null
-
-//convert F to C & vice versa-----------------
-/*function convertToF(event) {
-  event.preventDefault();
-  let leTemps = temperature.innerHTML;
-  leTemps = Number(leTemps);
-  temperature.innerHTML = Math.round(((leTemps - 32) * 5) / 9);
-}
-
-let changeFahre = document.querySelector("#convertC");
-
-changeFahre.addEventListener("click", convertToF);
-
-let changeCel = document.querySelector("#convertF");
-changeCel.addEventListener("click", converttoC);
-
-function converttoC(event) {
-  event.preventDefault();
-  let elTiempo = temperature.innerHTML;
-  elTiempo = Number(elTiempo);
-  temperature.innerHTML = Math.round((elTiempo * 9) / 5 + 32);
-} */
