@@ -48,7 +48,7 @@ function searchedCity(event) {
     let cityInput = document.querySelector("#search-input");
     leCity.innerHTML = cityInput.value;
     city = cityInput.value
-    getWeatherOfCity(city);
+    getWeatherOfCity(city, units);
 }
 
 let leCity = document.querySelector("#city");
@@ -61,7 +61,7 @@ let city = "Los Angeles";
 let units = "imperial";
 let temperature = document.querySelector("#degrees");
 
-function showTemperature(response) {
+function showWeather(response) {
   temperature.innerHTML = Math.round(response.data.main.temp);
   leCity.innerHTML = response.data.name
   let desc = document.querySelector("#description")
@@ -80,23 +80,24 @@ function showTemperature(response) {
   coun.innerHTML = response.data.sys.country
   let icon = document.querySelector("#icon")
   icon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
-
-  fahrenheitTemp = response.data.main.temp
 }
 
-function getWeatherOfCity(cityToCheck){
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityToCheck}&units=${units}`;
-axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
+function getWeatherOfCity(cityToCheck, unitToCheck){
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityToCheck}&units=${unitToCheck}`;
+axios.get(`${apiUrl}&appid=${apiKey}`).then(showWeather);
 }
 
-getWeatherOfCity(city)
+getWeatherOfCity(city, units)
 
 //geolocation---------------------
 function showPosition(position) {
   let lat = position.coords.latitude.toFixed(2);
   let long = position.coords.longitude.toFixed(2);
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=${units}`;
-  axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
+  axios.get(`${apiUrl}&appid=${apiKey}`).then(function(response){
+    city = response.data.name
+    getWeatherOfCity(city, units)
+  });
 }
 
 function getCurrentPosition(){
@@ -111,15 +112,22 @@ function changeToC(event) {
   event.preventDefault();
   fahrenheitLink.classList.remove("inactive")
   celsiusLink.classList.add("inactive")
-  let celsiusTemp = Math.round(((fahrenheitTemp - 32)* 5)/9)
-  temperature.innerHTML = celsiusTemp
+  let wiiind = document.querySelector("#wind-units")
+  wiiind.innerHTML = ` m/sec`
+
+  units = "metric";
+  getWeatherOfCity(city, units)
 }
 
 function changeToF(event) {
   event.preventDefault()
   celsiusLink.classList.remove("inactive")
   fahrenheitLink.classList.add("inactive")
-  temperature.innerHTML = Math.round(fahrenheitTemp)
+  let wiiind = document.querySelector("#wind-units")
+  wiiind.innerHTML = ` mi/hr`
+
+  units = "imperial"
+  getWeatherOfCity(city, units)
 }
 
 let celsiusLink = document.querySelector("#convertC")
@@ -127,5 +135,3 @@ celsiusLink.addEventListener("click", changeToC)
 
 let fahrenheitLink = document.querySelector("#convertF")
 fahrenheitLink.addEventListener("click", changeToF)
-
-let fahrenheitTemp = null
