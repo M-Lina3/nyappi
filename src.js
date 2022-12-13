@@ -62,6 +62,11 @@ let city = "Los Angeles";
 let units = "imperial";
 let temperature = document.querySelector("#degrees");
 
+function getForecast(coordinates){
+  let forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=${units}&appid=${apiKey}&units${units}`
+  axios.get(forecastUrl).then(forecasting)
+}
+
 function showWeather(response) {
   temperature.innerHTML = Math.round(response.data.main.temp);
   leCity.innerHTML = response.data.name
@@ -81,6 +86,8 @@ function showWeather(response) {
   coun.innerHTML = response.data.sys.country
   let icon = document.querySelector("#icon")
   icon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
+
+  getForecast(response.data.coord)
 }
 
 function getWeatherOfCity(cityToCheck, unitToCheck){
@@ -138,21 +145,28 @@ let fahrenheitLink = document.querySelector("#convertF")
 fahrenheitLink.addEventListener("click", changeToF)
 
 //forecast (∩^o^)⊃━☆ﾟ.*･｡-------------
-function forecasting(){
+function formatDt(timestamp) {
+  let ledate = new Date(timestamp * 1000)
+  let leday = ledate.getDay()
+  let jours = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+  return jours[leday]
+}
+
+function forecasting(response){
+  let dailycat = response.data.daily
   let forecast = document.querySelector("#forecast")
-  let nights = ['Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+ 
   let forecastHTML = `<div class="row justify-content-center">`
-  nights.forEach(function (night) {
+  dailycat.forEach(function(dailycatDay){
+  
     forecastHTML = forecastHTML + `
     <div class="col col-sm-2 days">
-      <div id="weekday">${night}</div>
-        <div class="tenki"><img src="" id="forecast-icon">🌙</div>
-          <div id="forecast-max">??<span>°/</span><span id="forecast-min">??</span>°</div>
+      <div id="weekday">${formatDt(dailycatDay.dt)}</div>
+        <div class="tenki"><img src="http://openweathermap.org/img/wn/${dailycatDay.weather[0].icon}@2x.png" class="forecast-icon"></div>
+          <div id="forecast-max">${Math.round(dailycatDay.temp.max)}<span>°/</span><span id="forecast-min">${Math.round(dailycatDay.temp.min)}</span>°</div>
     </div>`
   })
 
   forecastHTML = forecastHTML + `</div>`
   forecast.innerHTML = forecastHTML
 }
-
-forecasting()
