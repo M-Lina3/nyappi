@@ -56,7 +56,8 @@ let leForm = document.querySelector("#search-form");
 leForm.addEventListener("submit", searchedCity);
 
 //weather API---------------------
-let apiKey = "0b6316953363b3ec3e7536039a47981b";
+let apiKey = "8c48afa47a9a9c24f3500c7039d50aaa";
+//使えないキー"0b6316953363b3ec3e7536039a47981b";
 let city = "Los Angeles";
 let units = "imperial";
 let temperature = document.querySelector("#degrees");
@@ -135,3 +136,23 @@ celsiusLink.addEventListener("click", changeToC)
 
 let fahrenheitLink = document.querySelector("#convertF")
 fahrenheitLink.addEventListener("click", changeToF)
+
+//forecast (∩^o^)⊃━☆ﾟ.*･｡-------------
+function forecasting(){
+  let forecast = document.querySelector("#forecast")
+  let nights = ['Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+  let forecastHTML = `<div class="row justify-content-center">`
+  nights.forEach(function (night) {
+    forecastHTML = forecastHTML + `
+    <div class="col col-sm-2 days">
+      <div id="weekday">${night}</div>
+        <div class="tenki"><img src="" id="forecast-icon">🌙</div>
+          <div id="forecast-max">??<span>°/</span><span id="forecast-min">??</span>°</div>
+    </div>`
+  })
+
+  forecastHTML = forecastHTML + `</div>`
+  forecast.innerHTML = forecastHTML
+}
+
+forecasting()
