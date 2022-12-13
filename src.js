@@ -157,7 +157,8 @@ function forecasting(response){
   let forecast = document.querySelector("#forecast")
  
   let forecastHTML = `<div class="row justify-content-center">`
-  dailycat.forEach(function(dailycatDay){
+  dailycat.forEach(function(dailycatDay, index){
+    if (index < 5) {
   
     forecastHTML = forecastHTML + `
     <div class="col col-sm-2 days">
@@ -165,7 +166,7 @@ function forecasting(response){
         <div class="tenki"><img src="http://openweathermap.org/img/wn/${dailycatDay.weather[0].icon}@2x.png" class="forecast-icon"></div>
           <div id="forecast-max">${Math.round(dailycatDay.temp.max)}<span>°/</span><span id="forecast-min">${Math.round(dailycatDay.temp.min)}</span>°</div>
     </div>`
-  })
+}})
 
   forecastHTML = forecastHTML + `</div>`
   forecast.innerHTML = forecastHTML
